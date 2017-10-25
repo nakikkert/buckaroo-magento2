@@ -50,28 +50,14 @@ class BuckarooFee extends \Magento\Sales\Model\Order\Invoice\Total\AbstractTotal
     {
         $order = $invoice->getOrder();
 
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
         $buckarooFeeTaxAmountLeft = $order->getBuckarooFeeTaxAmount() - $order->getBuckarooFeeTaxAmountInvoiced();
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
         $baseBuckarooFeeTaxAmountLeft = $order->getBuckarooFeeBaseTaxAmount()
             - $order->getBuckarooFeeBaseTaxAmountInvoiced();
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
+
         $buckarooFeeInclTaxAmountLeft = $order->getBuckarooFeeInclTax() - $order->getBuckarooFeeTaxInvoiced();
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
         $baseBuckarooFeeInclTaxAmountLeft = $order->getBaseBuckarooFeeInclTax()
             - $order->getBaseBuckarooFeeInclTaxInvoiced();
 
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
         if ($order->getBuckarooFeeBaseTaxAmount() && $baseBuckarooFeeTaxAmountLeft > 0) {
             if ($baseBuckarooFeeTaxAmountLeft < $invoice->getBaseGrandTotal()) {
                 $invoice->setGrandTotal($invoice->getGrandTotal() + $buckarooFeeTaxAmountLeft);
