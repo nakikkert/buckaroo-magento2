@@ -479,6 +479,10 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
         if (version_compare($context->getVersion(), '1.3.0', '<')) {
             $this->installBaseGiftcards($setup, $this->giftcardAdditionalArray);
         }
+
+        if (version_compare($context->getVersion(), '1.4.1', '<')) {
+            $this->addInclTaxColumns($setup);
+        }
     }
 
     /**
@@ -962,5 +966,35 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
         }
 
         return $this;
+    }
+
+    /**
+     * Adds the Incl tax columns to the invoice table, so they can be used in pdf.xml
+     *
+     * @param ModuleDataSetupInterface $setup
+     *
+     * @return $this
+     */
+    protected function addInclTaxColumns(ModuleDataSetupInterface $setup)
+    {
+        /**
+         * @var \Magento\Sales\Setup\SalesSetup $salesInstaller
+         */
+        $salesInstaller = $this->salesSetupFactory->create([
+            'resourceName' => 'sales_setup',
+            'setup' => $setup
+        ]);
+
+        $salesInstaller->addAttribute(
+            'invoice',
+            'base_buckaroo_fee_incl_tax',
+            ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL]
+        );
+
+        $salesInstaller->addAttribute(
+            'invoice',
+            'buckaroo_fee_incl_tax',
+            ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL]
+        );
     }
 }
