@@ -196,6 +196,7 @@ class BuckarooFee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
     /**
      * @param \TIG\Buckaroo\Model\Method\AbstractMethod $methodInstance
      * @param \Magento\Quote\Model\Quote                $quote
+     * @param bool                                      $inclTax
      *
      * @return bool|false|float
      * @throws \TIG\Buckaroo\Exception
@@ -214,7 +215,7 @@ class BuckarooFee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
         $basePaymentFee = trim($configProvider->getPaymentFee());
 
         if (is_numeric($basePaymentFee)) {
-            if($inclTax) {
+            if ($inclTax) {
                 return $basePaymentFee;
             }
             /**
