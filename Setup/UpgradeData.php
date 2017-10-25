@@ -977,8 +977,13 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
      */
     protected function addInclTaxColumns(ModuleDataSetupInterface $setup)
     {
-
-        $salesInstaller = $this->salesSetupFactory->create(['resourceName' => 'sales_setup', 'setup' => $setup]);
+        /**
+         * @var \Magento\Sales\Setup\SalesSetup $salesInstaller
+         */
+        $salesInstaller = $this->salesSetupFactory->create([
+            'resourceName' => 'sales_setup',
+            'setup' => $setup
+        ]);
 
         $salesInstaller->addAttribute(
             'invoice',
