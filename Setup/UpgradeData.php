@@ -977,22 +977,15 @@ class UpgradeData implements \Magento\Framework\Setup\UpgradeDataInterface
      */
     protected function addInclTaxColumns(ModuleDataSetupInterface $setup)
     {
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
+
         $salesInstaller = $this->salesSetupFactory->create(['resourceName' => 'sales_setup', 'setup' => $setup]);
 
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
         $salesInstaller->addAttribute(
             'invoice',
             'base_buckaroo_fee_incl_tax',
             ['type' => \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL]
         );
-        /**
-         * @noinspection PhpUndefinedMethodInspection
-         */
+
         $salesInstaller->addAttribute(
             'invoice',
             'buckaroo_fee_incl_tax',

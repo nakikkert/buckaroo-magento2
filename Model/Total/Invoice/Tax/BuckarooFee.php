@@ -87,21 +87,10 @@ class BuckarooFee extends \Magento\Sales\Model\Order\Invoice\Total\AbstractTotal
             $invoice->setTaxAmount($invoice->getTaxAmount() + $buckarooFeeTaxAmountLeft);
             $invoice->setBaseTaxAmount($invoice->getBaseTaxAmount() + $baseBuckarooFeeTaxAmountLeft);
 
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             */
             $invoice->setBuckarooFeeTaxAmount($buckarooFeeTaxAmountLeft);
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             */
             $invoice->setBuckarooFeeBaseTaxAmount($baseBuckarooFeeTaxAmountLeft);
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             */
+
             $invoice->setBuckarooFeeInclTax($buckarooFeeInclTaxAmountLeft);
-            /**
-             * @noinspection PhpUndefinedMethodInspection
-             */
             $invoice->setBaseBuckarooFeeInclTax($baseBuckarooFeeInclTaxAmountLeft);
         }
 
