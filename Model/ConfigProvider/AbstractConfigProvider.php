@@ -38,9 +38,7 @@
  */
 namespace TIG\Buckaroo\Model\ConfigProvider;
 
-use \Magento\Checkout\Model\ConfigProviderInterface;
-
-abstract class AbstractConfigProvider implements ConfigProviderInterface
+abstract class AbstractConfigProvider
 {
     /**
      * @var string
