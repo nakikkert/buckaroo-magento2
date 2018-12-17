@@ -135,10 +135,9 @@ abstract class AbstractConfigProvider implements ConfigProviderInterface
     /**
      * Get all config in associated array
      *
-     * @param  null|int|\Magento\Store\Model\Store $store
      * @return array
      */
-    public function getConfig($store = null)
+    public function getConfig()
     {
         return [];
     }
